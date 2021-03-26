@@ -1,11 +1,16 @@
-# SAME Repo
+# SAME Example: Cross-Sell Prediction
 
-This is a sample, well structured repo based on a combination of NBDev and Cookie Cutter Data Science.
+> **This is a work in progress!**
 
-The idea is that if a developer uses this repo as a template:
-- They have clear structure in which to put things
-- They can begin by simply opening a Jupyter notebook
-- They have pre-built actions to break the notebook down into packages
-- Those packages are automatically containerized and uploaded to the registry of their choosing
+## Usage
 
-We hope this is a starting point for great development everywhere!
+Create a working SAME installation by [following instructions found in the wiki](https://github.com/azure-octo/same-cli/wiki/Epic-Sprint-1-Demo), but stop before the "Run a program" section. Then run the following commands:
+
+```bash
+git clone https://github.com/SAME-Project/example-kubeflow-CrossSell
+cd example-kubeflow-CrossSell
+same program create -f same.yaml
+same program run -f same.yaml --experiment-name cross-sell --run-name default
+```
+
+Now browse to your kubeflow installation and you should be able to see an experiment and a run.
