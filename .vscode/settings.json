@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/home/daaronch/.cache/pypoetry/virtualenvs/arxiv.1303.5778v1-zsmNuF0B-py3.8/bin/python"
+    "python.pythonPath": "/Users/phil/Library/Caches/pypoetry/virtualenvs/example-kubeflow-crosssell-EWd9rWoM-py3.9/bin/python",
+    "python.analysis.extraPaths": ["src"]
 }
