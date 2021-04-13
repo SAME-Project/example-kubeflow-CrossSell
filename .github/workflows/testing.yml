@@ -1,0 +1,59 @@
+name: tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  tests:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-20.04
+
+    steps:
+    #----------------------------------------------
+    # check-out repo and set-up python
+    #----------------------------------------------
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Get full Python version
+      id: full-python-version
+      shell: bash
+      run: echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
+
+    #----------------------------------------------
+    # install & configure poetry
+    #----------------------------------------------
+    - name: Install Poetry
+      uses: snok/install-poetry@v1.1.2
+      with:
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+
+    #----------------------------------------------
+    # load cached venv if cache exists
+    #----------------------------------------------
+    - name: Load cached venv
+      id: cached-poetry-dependencies
+      uses: actions/cache@v2
+      with:
+        path: .venv
+        key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+
+    #----------------------------------------------
+    # install dependencies
+    #----------------------------------------------
+    - name: Install dependencies
+      shell: bash
+      run: make install
+
+    #----------------------------------------------
+    # run test suite
+    #----------------------------------------------
+    - name: Run pytest
+      shell: bash
+      run: make tests
