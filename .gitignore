@@ -141,3 +141,4 @@ generated_code/*
 
 iris_training.csv
 .vscode/
+.DS_Store
