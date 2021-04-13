@@ -2,7 +2,7 @@ finalize:
 	poetry update
 
 pre-commit:
-	poetry run pre-commit run --all-files
+	poetry run pre-commit install
 
 install: finalize
 	poetry install
