@@ -14,3 +14,7 @@ same program run -f same.yaml --experiment-name cross-sell --run-name default
 ```
 
 Now browse to your kubeflow installation and you should be able to see an experiment and a run.
+
+## Testing
+
+This repo is not a library, nor is it meant to run with different permutations of Python or library versions. It is not guaranteed to work with different Python or library versions, but it might. There is limited matrix testing in the github action CI/CD.

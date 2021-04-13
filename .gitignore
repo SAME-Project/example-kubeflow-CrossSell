@@ -140,3 +140,4 @@ generated_code/*
 !generated_code/execute_all_files.sh
 
 iris_training.csv
+.vs_code/
