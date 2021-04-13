@@ -9,17 +9,21 @@ on:
 jobs:
   tests:
     # The type of runner that the job will run on
-    runs-on: ubuntu-20.04
-
+    name: ${{ matrix.os }} / ${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}-latest
+    strategy:
+      matrix:
+        os: [Ubuntu]
+        python-version: [3.8, 3.9]
     steps:
     #----------------------------------------------
     # check-out repo and set-up python
     #----------------------------------------------
     - uses: actions/checkout@v2
-    - name: Set up Python
+    - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8
+        python-version: ${{ matrix.python-version }}
     - name: Get full Python version
       id: full-python-version
       shell: bash
@@ -42,7 +46,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: .venv
-        key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+        key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
 
     #----------------------------------------------
     # install dependencies
