@@ -13,8 +13,9 @@ jobs:
     runs-on: ${{ matrix.os }}-latest
     strategy:
       matrix:
-        os: [Ubuntu]
-        python-version: [3.8, 3.9]
+        os: [Ubuntu, MacOS]
+        python-version: [3.6, 3.7, 3.8, 3.9]
+      fail-fast: false
     steps:
     #----------------------------------------------
     # check-out repo and set-up python
