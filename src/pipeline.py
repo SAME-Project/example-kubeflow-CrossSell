@@ -1,3 +1,4 @@
+from kfp import components
 from kfp import dsl
 
 
@@ -8,8 +9,6 @@ from kfp import dsl
 def pipeline(
     epochs: int = 10,
 ):
-    from kfp import components
-
     from src import download
     from src import metrics
     from src import preprocessing
