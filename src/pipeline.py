@@ -9,11 +9,11 @@ from kfp import dsl
 def pipeline(
     epochs: int = 10,
 ):
-    from src import download
-    from src import metrics
-    from src import preprocessing
-    from src import training
-    from src import util
+    import download
+    import metrics
+    import preprocessing
+    import training
+    import util
 
     BASE_IMAGE = "gcr.io/deeplearning-platform-release/tf2-cpu.2-4:m65"
 
