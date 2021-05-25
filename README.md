@@ -55,6 +55,23 @@ This component performs the following operations:
 #### 4. Metrics ([code](./src/metrics.py))
 This component is passed the mlpipelinemetrics which contains metrics and generates a visualization of them that the kubeflow UI can understand.
 
+##### MLflow
+
+This branch supports MLflow tracking so you can watch long-running training metrics live. To install MLflow on your SAME cluster, install Terraform and ensure that either your `KUBECONFIG` environment variable or your `~/.kube/config` file points to the same cluster you ran `same init` on, then run:
+
+```
+git clone https://github.com/combinator-ml/terraform-k8s-mlflow
+cd terraform-k8s-mlflow
+terraform init
+terraform apply
+```
+
+Then run:
+```
+kubectl port-forward service/mlflow -n mlflow 5000:5000
+```
+And open [http://localhost:5000](http://localhost:5000).
+
 ## Developing
 
 When attempting to run or test the code locally you will need to install the reqiured libraries (this requires [poetry](https://python-poetry.org)).
