@@ -13,6 +13,9 @@ def train(
     import pandas as pd
     import tensorflow as tf
 
+    import mlflow
+    mlflow.autolog()
+
     from tensorflow import keras
 
     file = "train.csv"
@@ -73,4 +76,5 @@ def train(
     #     )
 
     # Save the model to the designated dir
+    print("Saving model to", model_dir)
     model.save(model_dir)
