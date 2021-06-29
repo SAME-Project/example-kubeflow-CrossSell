@@ -7,6 +7,9 @@ def train(
     n_epochs: int = 10,
     n_samples: int = None,
 ) -> None:
+    import mlflow
+    mlflow.autolog()
+
     import os
 
     import numpy as np
@@ -73,4 +76,5 @@ def train(
     #     )
 
     # Save the model to the designated dir
+    print("Saving model to", model_dir)
     model.save(model_dir)
