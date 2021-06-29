@@ -25,6 +25,8 @@ def pipeline(
     import training
     import util
 
+    print("hello, cruel world")
+
     BASE_IMAGE = "gcr.io/deeplearning-platform-release/tf2-cpu.2-4:m65"
 
     downloadOp = components.func_to_container_op(

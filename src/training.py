@@ -7,14 +7,14 @@ def train(
     n_epochs: int = 10,
     n_samples: int = None,
 ) -> None:
+    import mlflow
+    mlflow.autolog()
+
     import os
 
     import numpy as np
     import pandas as pd
     import tensorflow as tf
-
-    import mlflow
-    mlflow.autolog()
 
     from tensorflow import keras
 
